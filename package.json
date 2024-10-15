@@ -1,0 +1,23 @@
+{
+  "name": "glowing-fortnight",
+  "version": "1.0.0",
+  "description": "Simple node.js sqlite3 interaction",
+  "main": "sqlite3_int.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mceserani/glowing-fortnight.git"
+  },
+  "author": "Matteo Ceserani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mceserani/glowing-fortnight/issues"
+  },
+  "homepage": "https://github.com/mceserani/glowing-fortnight#readme",
+  "dependencies": {
+    "sqlite3": "^5.0.0"
+  },
+  "type": "module"
+}
