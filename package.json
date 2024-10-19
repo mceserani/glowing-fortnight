@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mceserani/glowing-fortnight#readme",
   "dependencies": {
+    "glowing-fortnight": "file:",
     "sqlite3": "^5.0.0"
   },
   "type": "module"
