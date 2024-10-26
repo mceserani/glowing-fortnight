@@ -4,6 +4,9 @@
 // Il DB deve essere creato solo se non esiste già
 
 import sqlite3 from 'sqlite3';
+import { promisify } from 'util';
+
+const pr_stmt_all = promisify(sqlite3.Statement.prototype.all.bind(sqlite3.Statement.prototype));
 
 const db = new sqlite3.Database("spesa.db", (err) => {
     if (err) {
@@ -95,31 +98,33 @@ const chiediUsername = [
 ];
 
 function main() {
-    inquirer.prompt(menu).then((answers) => {
+    
+    inquirer.prompt(menu).then((answers) => {        
         switch(answers.opzione) {
-            case 'Registrare un nuovo utente':
-                registrazione();
-                break;
-            case 'Inserire un prodotto nella lista della spesa':
-                inserisciProdotto();
-                break;
-            case 'Contrassegnare come comprato un prodotto esistente':
-                contrassegnaComprato();
-                break;
-            case 'Visualizzare la lista della spesa di un utente':
-                visualizzaLista();
-                break;
-            case 'Uscire dal programma':
-                db.close((err) => {
-                    if (err) {
-                        console.error("Errore nella chiusura del DB!");
-                    } else {
-                        console.log("DB chiuso con successo!");
-                    }
-                });
-                return;
-        }
+                case 'Registrare un nuovo utente':
+                    registrazione();
+                    break;
+                case 'Inserire un prodotto nella lista della spesa':
+                    inserisciProdotto();
+                    break;
+                case 'Contrassegnare come comprato un prodotto esistente':
+                    contrassegnaComprato();
+                    break;
+                case 'Visualizzare la lista della spesa di un utente':
+                    visualizzaLista();
+                    break;
+                case 'Uscire dal programma':
+                    db.close((err) => {
+                        if (err) {
+                            console.error("Errore nella chiusura del DB!");
+                        } else {
+                            console.log("DB chiuso con successo!");
+                        }
+                    });
+                    return;
+            }
     });
+    
 }
 
 function visualizzaLista() {
