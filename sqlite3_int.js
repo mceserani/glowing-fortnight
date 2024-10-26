@@ -13,6 +13,8 @@ const db = new sqlite3.Database("spesa.db", (err) => {
     }
 });
 
+db.get("PRAGMA foreign_keys = ON");
+
 db.serialize(() => {
     
     db.run("CREATE TABLE IF NOT EXISTS Utente (username TEXT NOT NULL, passwd TEXT NOT NULL, email TEXT NOT NULL UNIQUE, PRIMARY KEY(username))");
