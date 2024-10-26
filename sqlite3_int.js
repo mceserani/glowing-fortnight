@@ -4,9 +4,6 @@
 // Il DB deve essere creato solo se non esiste già
 
 import sqlite3 from 'sqlite3';
-import { promisify } from 'util';
-
-const pr_stmt_all = promisify(sqlite3.Statement.prototype.all.bind(sqlite3.Statement.prototype));
 
 const db = new sqlite3.Database("spesa.db", (err) => {
     if (err) {
@@ -124,7 +121,7 @@ function main() {
                     return;
             }
     });
-    
+
 }
 
 function visualizzaLista() {
